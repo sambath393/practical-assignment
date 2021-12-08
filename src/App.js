@@ -1,5 +1,5 @@
 import './App.css';
-import { AutoComplete, Button, Col, Divider, Empty, Layout, Row, Skeleton } from 'antd'
+import { AutoComplete, Button, Col, Empty, Layout, Row, Skeleton } from 'antd'
 import { useState } from 'react';
 import { createApi, } from "unsplash-js";
 import { SearchOutlined } from '@ant-design/icons';
@@ -164,25 +164,23 @@ function App() {
                     dataLength={data?.results?.length}
                     next={loadMoreData}
                     hasMore={data?.results?.length < data?.total}
-                    loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-                    endMessage={<Divider plain>It is all, nothing more 🤐</Divider>}
-                    scrollableTarget="scrollableDiv"
-                  >
-                    {data?.results?.length === 0 ? <Empty
+                    loader={<Skeleton paragraph={{ rows: 1 }} active />}
+                    endMessage={<Empty
                       description={
                         <span>
                           No Found
                         </span>
                       }
-                    /> :
-                      <div className="card-list">
+                    />}
+                    scrollableTarget="scrollableDiv"
+                  >
+                     <div className="card-list">
                         {
                           data?.results?.map(load =>
                             <CardBox data={load} user={user} />
                           )
                         }
                       </div>
-                    }
                   </InfiniteScroll>
                 </div>
               </Col>
