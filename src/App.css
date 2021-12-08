@@ -16,14 +16,32 @@
 }
 
 .card {
-    margin-bottom: 1rem;
-    display: flex;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  position: relative;
 }
 
 .card--image {
-    flex: 100%;
-    margin-top: 1rem;
-    border-radius: 10px;
+  cursor: pointer;
+  transition: transform 1s, filter 1s ease-in-out;
+}
+
+.card-likeBtn{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 0;
+  display: none;
+  transition: 5s;
+}
+
+.card--image:hover {
+  transform: scale(1.5);
+  filter: brightness(50%);
+}
+
+.card:hover .card-likeBtn{
+  display: block;
 }
 
 @media only screen and (max-width: 600px) {
